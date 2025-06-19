@@ -1,4 +1,4 @@
-import Home from "@/pages/Home.jsx";
+import Home from "@/pages/Movie.jsx";
 import { Route, Routes } from "react-router-dom";
 import MoviePage from "./pages/MoviePage";
 import Navbar from "./components/Navbar";

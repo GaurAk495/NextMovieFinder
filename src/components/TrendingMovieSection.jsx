@@ -2,11 +2,11 @@ import { getMovieById } from "@/api/movieApi";
 import { readMovies } from "@/dao/readData";
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import TrendingMovieTile from "./trendingMovieTile";
+import TrendingMovieTile from "@/components/TrendingMovieTile.jsx";
 import { CircularProgress } from "@mui/material";
 import ErrorFallback from "./QueryState/Error";
 
-function TrendingSection() {
+function TrendingMovieSection() {
   const { data: moveiListData, isLoading: moveiListDataLoading } = useQuery({
     queryKey: ["trendingList"],
     queryFn: readMovies,
@@ -28,13 +28,18 @@ function TrendingSection() {
     }
   };
 
-  const { data: trendingMovieData, isLoading: trendingMovieDataLoading } =
-    useQuery({
-      queryKey: ["trending-movies-all-details", top10],
-      queryFn: fetchAllMovieDetails,
-      enabled: !!moveiListData,
-      keepPreviousData: true,
-    });
+  const {
+    data: trendingMovieData,
+    isLoading: trendingMovieDataLoading,
+    isError,
+    error,
+    refetch,
+  } = useQuery({
+    queryKey: ["trending-movies-all-details", top10],
+    queryFn: fetchAllMovieDetails,
+    enabled: !!moveiListData,
+    keepPreviousData: true,
+  });
 
   if (moveiListDataLoading || trendingMovieDataLoading) {
     return (
@@ -70,4 +75,4 @@ function TrendingSection() {
   );
 }
 
-export default TrendingSection;
+export default TrendingMovieSection;

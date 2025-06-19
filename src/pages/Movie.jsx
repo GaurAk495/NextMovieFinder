@@ -2,7 +2,7 @@ import SearchBar from "../components/SearchBar";
 import PaginationComp from "../components/Pagination";
 import GenreComponent from "../components/GenreComponent";
 import MovieGrid from "@/components/MovieGrid";
-import TrendingSection from "@/components/TrendingSection";
+import TrendingSection from "@/components/TrendingMovieSection";
 
 export default function Home() {
   return (
